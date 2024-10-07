@@ -1,0 +1,46 @@
+1. Install Terraform: Download and install Terraform from the Terraform website.
+2. Set Up AWS CLI: Install the AWS CLI and configure your credentials with "aws configure".
+3. Configure AWS Credentials for Terraform: Use AWS CLI credentials, environment variables, or specify them directly in Terraform.
+4. Create a Terraform Configuration File: Write a main.tf file defining your AWS resources and provider.
+A. Using AWS CLI credentials (recommended)
+Terraform will automatically use credentials from your ~/.aws/credentials file if you've set them up using aws configure.
+
+B. Using Environment Variables
+You can export AWS credentials as environment variables before running Terraform:
+
+export AWS_ACCESS_KEY_ID="your-access-key-id"
+export AWS_SECRET_ACCESS_KEY="your-secret-access-key"
+export AWS_DEFAULT_REGION="your-region"   # e.g., us-west-2
+
+C. Using Terraform Provider Configuration
+You can specify AWS credentials directly in the Terraform configuration file, although this is less secure since credentials are hardcoded.
+
+provider "aws" {
+  access_key = "your-access-key-id"
+  secret_key = "your-secret-access-key"
+  region     = "your-region"  # e.g., us-west-2
+}
+
+5. Initialize Terraform: Run terraform init to initialize the working directory and download necessary plugins.
+6. Run Terraform Plan: Use terraform plan to preview the changes Terraform will make.
+7. Apply the Configuration: Execute terraform apply to create resources in AWS.
+
+9. To get public IP addresses of the created instances run:
+cat terraform.tfstate | jq -c '.resources[] | select(.type == "aws_instance") | .instances[].attributes.public_ip'
+
+
+10. Connect with:
+ ssh -i "../ansible_lab.pem" ec2-user@<public-ip>
+
+
+
+
+
+
+
+
+
+
+9. Destroy Resources: Run terraform destroy to clean up and remove AWS resources.
+
+
