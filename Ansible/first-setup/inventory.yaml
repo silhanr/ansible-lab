@@ -1,0 +1,10 @@
+---
+all:
+  hosts:
+    alpha:
+      ansible_host: 3.92.128.56
+    beta:
+      ansible_host: 54.145.154.124
+  vars:
+    ansible_user: ec2-user
+    ansible_ssh_private_key_file: /home/silhanr/.keys/ansible_lab.pem

@@ -1,0 +1,5 @@
+---
+# vars file for first-setup
+vars:
+  username: ec2-user
+  privkey: /home/silhanr/elearning/Lab/ansible-lab

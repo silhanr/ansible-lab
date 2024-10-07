@@ -1,0 +1,11 @@
+---
+# tasks file for configure_server
+
+- name: Get hostname
+  shell:
+    cmd: "hostname"
+  register: hostname_output
+
+- name: Display hostname
+  debug:
+    msg: "{{ hostname_output.stdout_lines }}"
